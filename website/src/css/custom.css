@@ -1,0 +1,349 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed for
+ * building documentation websites.
+ */
+
+/* You can override the classic template styles here. */
+:root {
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1a47c5;
+  --ifm-color-primary-darkest: #153a9f;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #4f91f7;
+  --ifm-color-primary-lightest: #6ba8fa;
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #1e293b;
+  --ifm-hero-background-color: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
+
+/* Improved base styles for better readability */
+html {
+  font-family: var(--ifm-font-family-base);
+}
+
+/* Custom styles for textbook */  
+.textbook-module {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: #f8fafc;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.textbook-objective {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+  border: 1px solid #93c5fd;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.textbook-objective h3 {
+  margin-top: 0;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.textbook-code-block {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.textbook-quiz {
+  background: linear-gradient(135deg, #f0fdfa 0%, #dcfce7 100%);
+  border: 1px solid #a7f3d0;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #10b981;
+}
+
+.textbook-quiz h3 {
+  color: #065f46;
+  margin-top: 0;
+}
+
+.textbook-summary {
+  background: linear-gradient(135deg, #fef2f2 0%, #ffe4e6 100%);
+  border-left: 4px solid #ef4444;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.textbook-summary h3 {
+  color: #dc2626;
+  margin-top: 0;
+}
+
+/* Custom robot-themed accent */
+.robot-accent {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Improve readability for technical content */
+.markdown h1, .markdown h2, .markdown h3 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+}
+
+.markdown h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.markdown h2 {
+  font-size: 1.75rem;
+  color: #334155;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.markdown h3 {
+  font-size: 1.375rem;
+  color: #334155;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Better styling for lists */
+.markdown ol, .markdown ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.markdown ol li, .markdown ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Improve blockquote styling */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background-color: #f1f5f9;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+  color: #475569;
+}
+
+/* Enhanced code and pre formatting */
+.markdown code {
+  background-color: #f1f5f9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  color: #dc2626;
+}
+
+.markdown pre {
+  background-color: #1e293b !important;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.markdown pre code {
+  background: none !important;
+  color: #e2e8f0;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Special styling for example code blocks */
+.admonition-example {
+  border-color: var(--ifm-color-primary);
+  background-color: #eff6ff;
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+.admonition-note {
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+  border-left: 4px solid #f59e0b;
+}
+
+/* Improve table readability */
+.markdown table {
+  display: table;
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.markdown table th,
+.markdown table td {
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  text-align: left;
+}
+
+.markdown table th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+  color: #334155;
+}
+
+.markdown table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.markdown table tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Enhance navigation and sidebar */
+.menu {
+  font-size: 0.95rem;
+}
+
+.menu__list-item-collapsible:hover {
+  background-color: #f1f5f9;
+  border-radius: 0.375rem;
+}
+
+.menu__link--active {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+/* Improve buttons */
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Better responsive behavior for images */
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced navigation bar */
+.navbar {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Footer improvements */
+.footer {
+  background-color: var(--ifm-footer-background-color) !important;
+}
+
+.footer__title {
+  color: #f1f5f9;
+}
+
+.footer__link-item {
+  color: #cbd5e1;
+}
+
+.footer__link-item:hover {
+  color: #e2e8f0;
+}
+
+/* Custom card styles for featured content */
+.featured-card {
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary-light);
+}
+
+.featured-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-card h3 {
+  color: #1e293b;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+/* Add animation for interactive elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.markdown > * {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Improve mobile responsiveness */
+@media (max-width: 996px) {
+  .markdown h1 {
+    font-size: 1.875rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.5rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.25rem;
+  }
+
+  .textbook-objective,
+  .textbook-quiz,
+  .textbook-summary {
+    padding: 1rem;
+  }
+}
+
+/* Improve accessibility for focus states */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}

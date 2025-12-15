@@ -1,0 +1,34 @@
+robotics:
+  label: 'Robotics'
+  permalink: '/robotics'
+  description: 'Articles about robotics technologies and applications'
+
+ai:
+  label: 'AI'
+  permalink: '/ai'
+  description: 'Articles about artificial intelligence in robotics'
+
+education:
+  label: 'Education'
+  permalink: '/education'
+  description: 'Educational content and learning resources'
+
+textbook:
+  label: 'Textbook'
+  permalink: '/textbook'
+  description: 'Textbook-related updates and content'
+
+advanced:
+  label: 'Advanced'
+  permalink: '/advanced'
+  description: 'Advanced topics in robotics and AI'
+
+hello:
+  label: 'Hello'
+  permalink: '/hello'
+  description: 'Introduction to robotics concepts'
+
+interactive:
+  label: 'Interactive'
+  permalink: '/interactive'
+  description: 'Interactive robotics content and demonstrations'
