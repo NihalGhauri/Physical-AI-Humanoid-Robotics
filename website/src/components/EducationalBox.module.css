@@ -2,21 +2,23 @@
   border-radius: 0.75rem;
   margin: 1.5rem 0;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #2563eb;
+  box-shadow: 0 4px 6px -1px var(--ifm-color-shadow);
+  border-left: 4px solid var(--ifm-color-objective);
+  background-color: var(--ifm-color-background-light);
+  border: 1px solid var(--ifm-color-border);
 }
 
 .header {
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  background-color: rgba(224, 231, 255, 0.3);
+  border-bottom: 1px solid var(--ifm-color-border-light);
+  background-color: color-mix(in srgb, var(--ifm-color-background-light) 60%, white);
 }
 
 .title {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--ifm-color-text);
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
@@ -24,88 +26,119 @@
 .content {
   padding: 1.25rem;
   line-height: 1.6;
+  color: var(--ifm-color-text);
 }
 
 /* Objective type */
 .box--objective {
-  border-left-color: #2563eb;
-  background-color: #eff6ff;
+  border-left-color: var(--ifm-color-objective);
+  background-color: color-mix(in srgb, var(--ifm-color-objective) 5%, var(--ifm-color-background-light));
 }
 
 .box--objective .header {
-  background-color: #dbeafe;
+  background-color: color-mix(in srgb, var(--ifm-color-objective) 10%, var(--ifm-color-background-light));
 }
 
 .box--objective .title {
-  color: #1e40af;
+  color: var(--ifm-color-objective);
 }
 
 /* Quiz type */
 .box--quiz {
-  border-left-color: #10b981;
-  background-color: #f0fdfa;
+  border-left-color: var(--ifm-color-quiz);
+  background-color: color-mix(in srgb, var(--ifm-color-quiz) 5%, var(--ifm-color-background-light));
 }
 
 .box--quiz .header {
-  background-color: #d1fae5;
+  background-color: color-mix(in srgb, var(--ifm-color-quiz) 10%, var(--ifm-color-background-light));
 }
 
 .box--quiz .title {
-  color: #065f46;
+  color: var(--ifm-color-quiz);
 }
 
 /* Summary type */
 .box--summary {
-  border-left-color: #7e22ce;
-  background-color: #f5f3ff;
+  border-left-color: var(--ifm-color-summary);
+  background-color: color-mix(in srgb, var(--ifm-color-summary) 5%, var(--ifm-color-background-light));
 }
 
 .box--summary .header {
-  background-color: #e9d5ff;
+  background-color: color-mix(in srgb, var(--ifm-color-summary) 10%, var(--ifm-color-background-light));
 }
 
 .box--summary .title {
-  color: #713f12;
+  color: var(--ifm-color-summary);
 }
 
 /* Note type */
 .box--note {
-  border-left-color: #f59e0b;
-  background-color: #fffbf0;
+  border-left-color: var(--ifm-color-note);
+  background-color: color-mix(in srgb, var(--ifm-color-note) 5%, var(--ifm-color-background-light));
 }
 
 .box--note .header {
-  background-color: #fef3c7;
+  background-color: color-mix(in srgb, var(--ifm-color-note) 10%, var(--ifm-color-background-light));
 }
 
 .box--note .title {
-  color: #92400e;
+  color: var(--ifm-color-note);
 }
 
 /* Example type */
 .box--example {
-  border-left-color: #8b5cf6;
-  background-color: #f3e8ff;
+  border-left-color: var(--ifm-color-example);
+  background-color: color-mix(in srgb, var(--ifm-color-example) 5%, var(--ifm-color-background-light));
 }
 
 .box--example .header {
-  background-color: #e9d5ff;
+  background-color: color-mix(in srgb, var(--ifm-color-example) 10%, var(--ifm-color-background-light));
 }
 
 .box--example .title {
-  color: #6d28d9;
+  color: var(--ifm-color-example);
 }
 
 /* Warning type */
 .box--warning {
-  border-left-color: #ef4444;
-  background-color: #fef2f2;
+  border-left-color: var(--ifm-color-warning);
+  background-color: color-mix(in srgb, var(--ifm-color-warning) 5%, var(--ifm-color-background-light));
 }
 
 .box--warning .header {
-  background-color: #fecaca;
+  background-color: color-mix(in srgb, var(--ifm-color-warning) 10%, var(--ifm-color-background-light));
 }
 
 .box--warning .title {
-  color: #b91c1c;
+  color: var(--ifm-color-warning);
+}
+
+/* Dark mode specific overrides */
+[data-theme='dark'] .box {
+  background-color: var(--ifm-color-background-light);
+  border: 1px solid var(--ifm-color-border);
+}
+
+[data-theme='dark'] .box--objective {
+  background-color: color-mix(in srgb, var(--ifm-color-objective) 10%, var(--ifm-color-background));
+}
+
+[data-theme='dark'] .box--quiz {
+  background-color: color-mix(in srgb, var(--ifm-color-quiz) 10%, var(--ifm-color-background));
+}
+
+[data-theme='dark'] .box--summary {
+  background-color: color-mix(in srgb, var(--ifm-color-summary) 10%, var(--ifm-color-background));
+}
+
+[data-theme='dark'] .box--note {
+  background-color: color-mix(in srgb, var(--ifm-color-note) 10%, var(--ifm-color-background));
+}
+
+[data-theme='dark'] .box--example {
+  background-color: color-mix(in srgb, var(--ifm-color-example) 10%, var(--ifm-color-background));
+}
+
+[data-theme='dark'] .box--warning {
+  background-color: color-mix(in srgb, var(--ifm-color-warning) 10%, var(--ifm-color-background));
 }

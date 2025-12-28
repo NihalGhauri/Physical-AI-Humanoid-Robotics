@@ -1,0 +1,95 @@
+# API Contract: RAG Agent Interface
+
+## Overview
+This document specifies the API contract for the RAG Agent that answers book-related questions based on retrieved content from Qdrant.
+
+## Endpoints
+
+### POST /query
+**Purpose**: Submit a book-related question to the RAG agent
+
+**Request**:
+```json
+{
+  "question": "string (the book-related question)",
+  "top_k": "integer (number of chunks to retrieve, default: 5)",
+  "min_score": "float (minimum relevance score, default: 0.3)"
+}
+```
+
+**Response**:
+```json
+{
+  "response": "string (the agent's answer)",
+  "sources": [
+    {
+      "url": "string (source URL)",
+      "title": "string (page title)",
+      "section": "string (section heading)",
+      "score": "float (relevance score)"
+    }
+  ],
+  "grounded": "boolean (whether response is based on retrieved content)",
+  "retrieved_chunks_count": "integer (number of chunks used)"
+}
+```
+
+**Success Response (200 OK)**:
+- The agent successfully processed the query
+- Response is grounded in retrieved content
+- Sources are provided when content was retrieved
+
+**Error Response (400 Bad Request)**:
+- Question is empty or invalid
+- Invalid parameters provided
+
+**Error Response (500 Internal Server Error)**:
+- Retrieval system unavailable
+- Agent processing error
+
+## GET /health
+**Purpose**: Check the health status of the RAG agent service
+
+**Response**:
+```json
+{
+  "status": "string (overall health status)",
+  "components": {
+    "openai_agent": "string (status)",
+    "qdrant_connection": "string (status)",
+    "cohere_connection": "string (status)"
+  }
+}
+```
+
+## GET /validate-retrieval
+**Purpose**: Validate that the retrieval system is functioning correctly
+
+**Response**:
+```json
+{
+  "connection_valid": "boolean",
+  "retrieval_success": "boolean",
+  "metadata_valid": "boolean",
+  "content_relevant": "boolean",
+  "overall_success": "boolean"
+}
+```
+
+## Authentication
+All endpoints require API key authentication via Bearer token in the Authorization header:
+```
+Authorization: Bearer {API_KEY}
+```
+
+## Rate Limiting
+- 100 requests per minute per API key
+- 429 status code returned when limit exceeded
+
+## Error Codes
+- 400: Invalid request parameters
+- 401: Authentication required
+- 403: Insufficient permissions
+- 429: Rate limit exceeded
+- 500: Internal server error
+- 503: Service unavailable

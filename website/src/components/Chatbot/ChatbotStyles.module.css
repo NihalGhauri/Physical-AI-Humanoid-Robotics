@@ -1,0 +1,292 @@
+/* Chatbot Component Styles */
+
+/* Floating Chatbot Button */
+.chatbotButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #2e855b; /* Docusaurus primary color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  font-size: 24px;
+}
+
+.chatbotButton:hover {
+  background-color: #27694a; /* Darker shade of Docusaurus primary color */
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chatbotButton:focus {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+}
+
+.chatbotButton.open {
+  background-color: #e74c3c;
+}
+
+.chatbotButton.open:hover {
+  background-color: #c0392b;
+}
+
+.chatbotButton.hidden {
+  transform: translateY(100px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Chatbot Panel */
+.chatbotPanel {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 380px;
+  height: 500px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-family: var(--ifm-font-family-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
+}
+
+.chatbotPanel.hidden {
+  transform: translateY(100px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Chat Header */
+.chatHeader {
+  background-color: #1b6dfc;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chatHeader button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.chatHeader button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Message List */
+.messageList {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f9f9f9;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background-color: #1b6dfc;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.botMessage {
+  align-self: flex-start;
+  background-color: #e9ecef;
+  color: #212529;
+  border-bottom-left-radius: 4px;
+}
+
+/* Message Input Area */
+.messageInputArea {
+  padding: 12px;
+  background-color: white;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  gap: 8px;
+}
+
+.messageInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  font-size: 14px;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.messageInput:focus {
+  border-color: #1b6dfc;
+  box-shadow: 0 0 0 3px rgba(27, 109, 252, 0.15);
+}
+
+.sendButton {
+  background-color: #1b6dfc;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.sendButton:hover {
+  background-color: #0d5ae5;
+}
+
+.sendButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background-color: #e74c3c; /* Red color for cancel */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.cancelButton:hover {
+  background-color: #c0392b;
+}
+
+/* Loading indicator */
+.loadingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: #e9ecef;
+  border-radius: 18px;
+  align-self: flex-start;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.loadingDots {
+  display: flex;
+  gap: 4px;
+}
+
+.loadingDot {
+  width: 6px;
+  height: 6px;
+  background-color: #6c757d;
+  border-radius: 50%;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+.loadingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loadingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+}
+
+/* Sources section */
+.sources {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #dee2e6;
+}
+
+.sources h4 {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.sourcesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sourcesList li {
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.sourcesList a {
+  color: #1b6dfc;
+  text-decoration: none;
+}
+
+.sourcesList a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chatbotPanel {
+    width: calc(100% - 30px);
+    left: 15px;
+    right: 15px;
+    height: 50vh;
+  }
+
+  .chatbotButton {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+}

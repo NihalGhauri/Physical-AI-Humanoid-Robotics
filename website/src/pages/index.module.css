@@ -3,82 +3,200 @@
  * and scoped locally.
  */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  background-attachment: fixed;
-}
 
-@media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2.5rem 1rem;
+    padding: 5rem 0 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--ifm-color-primary) 10%, rgb(214, 120, 44)) 0%,
+      color-mix(in srgb, var(--ifm-color-primary-light) 10%, rgb(58, 159, 179)) 100%
+    );
+
+    color: var(--ifm-color-content);
   }
-}
+
+  [data-theme='dark'] .heroBanner {
+    background: linear-gradient(  
+      135deg,
+      color-mix(in srgb, var(--ifm-color-primary) 16%, var(--ifm-background-color)) 0%,
+      color-mix(in srgb, var(--ifm-color-primary-light) 20%, var(--ifm-background-color)) 100%
+    );
+  }
+
+  /* Hero image – transparent, crisp, professional */
+  .heroBanner img {
+    max-width: 160px;
+    width: 100%;
+    height: 100%;
+
+    margin: 1.75rem auto 2rem;
+    display: block;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    object-fit: contain;
+    image-rendering: auto;
+
+    /* subtle optical polish */
+    filter: drop-shadow(0 0px 0px rgba(0, 0, 0, 0.08));
+  }
+
+  [data-theme='dark'] .heroBanner img {
+    filter: drop-shadow(0 0px 0px rgba(0, 0, 0, 0.35));
+  }
+
+  @media screen and (max-width: 996px) {
+    .heroBanner {
+      padding: 1rem 1rem 2.5rem;
+    }
+
+    .heroBanner img {
+      max-width: 130px;
+      margin-bottom: 1.5rem;
+    }
+  }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .textbookIntro {
-  max-width: 800px;
-  margin: 2rem auto 3rem;
-  padding: 0 1rem;
+  padding: 3rem 1.5rem;
   text-align: center;
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 5%, var(--ifm-color-background));
+  border: 1px solid var(--ifm-color-border);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 0.5rem;
+  margin: 3rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 6px -1px var(--ifm-color-shadow);
+}
+
+.textbookIntro h2 {
+  color: var(--ifm-color-text);
+  margin-bottom: 1.5rem;
 }
 
 .textbookIntro p {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #374151;
+  color: var(--ifm-color-text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .featuredModulesSection {
-  padding: 3rem 0;
-  background-color: #f8fafc;
+  padding: 4rem 1.5rem;
+  background-color: color-mix(in srgb, var(--ifm-color-background) 30%, white);
+}
+
+[data-theme='dark'] .featuredModulesSection {
+  background-color: color-mix(in srgb, var(--ifm-color-background) 50%, var(--ifm-color-background-light));
 }
 
 .robotCard {
-  margin: 1rem auto;
-  padding: 1.75rem;
+  margin: 1.5rem auto;
+  padding: 2rem;
   border-radius: 0.75rem;
-  background-color: white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
-  transition: all 0.3s ease;
+  background-color: var(--ifm-color-card);
+  box-shadow: 0 4px 6px -1px var(--ifm-color-shadow);
+  transition: var(--ifm-transition);
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--ifm-color-card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.robotCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
 }
 
 .robotCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  border-color: #93c5fd;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px var(--ifm-color-shadow-heavy);
+  border-color: var(--ifm-color-primary-light);
 }
 
 .robotCard h3 {
-  color: #1e40af;
-  margin-top: 0;
+  color: var(--ifm-color-text);
+  margin-top: 0.5rem;
   font-weight: 600;
   font-size: 1.25rem;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--ifm-color-border-light);
 }
 
 .robotCard p {
-  color: #475569;
+  color: var(--ifm-color-text-secondary);
   line-height: 1.6;
   flex-grow: 1;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.robotCard .button {
+  align-self: flex-start;
+  margin-top: auto;
+  border-radius: 0.375rem;
+  border: 1px solid var(--ifm-color-primary);
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  padding: 0.625rem 1.25rem;
+  font-weight: 500;
+  transition: var(--ifm-transition);
+  text-decoration: none;
+}
+
+.robotCard .button:hover {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px var(--ifm-color-shadow);
+}
+
+/* Professional CTA section */
+.ctaSection {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ifm-color-primary) 20%, var(--ifm-color-background)) 0%, color-mix(in srgb, var(--ifm-color-primary-light) 20%, var(--ifm-color-background)) 100%);
+  text-align: center;
+  border-radius: 1rem;
+  margin: 0 1.5rem 3rem;
+}
+
+[data-theme='dark'] .ctaSection {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ifm-color-primary) 25%, var(--ifm-color-background)) 0%, color-mix(in srgb, var(--ifm-color-primary-light) 35%, var(--ifm-color-background)) 100%);
+}
+
+.ctaSection h2 {
+  color: var(--ifm-color-text);
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  color: var(--ifm-color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
 /* Responsive adjustments */
@@ -86,4 +204,46 @@
   .robotCard {
     margin: 1rem;
   }
+
+  .textbookIntro {
+    padding: 2rem 1rem;
+    margin: 2rem auto;
+  }
+}
+
+/* Animation for interactive elements */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.featuredModulesSection .col {
+  animation: float 6s ease-in-out infinite;
+}
+
+.featuredModulesSection .col:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.featuredModulesSection .col:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* Logo styling */
+.avatar img {
+  max-height: 120px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+[data-theme='dark'] .avatar img {
+  filter: brightness(0) invert(1);
 }

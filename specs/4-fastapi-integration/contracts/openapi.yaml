@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: RAG Chatbot API
+  description: API for the RAG Chatbot that connects frontend with RAG agent
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Development server
+paths:
+  /chat:
+    post:
+      summary: Query the RAG agent
+      description: Process a user query and return a grounded response with source citations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Successful response from the RAG agent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Check the health status of the API and its dependencies
+      responses:
+        '200':
+          description: Health status information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Overall health status
+                  timestamp:
+                    type: number
+                    description: Unix timestamp of the check
+                  components:
+                    type: object
+                    description: Health status of individual components
+  /system-info:
+    get:
+      summary: System information
+      description: Get information about the system configuration
+      responses:
+        '200':
+          description: System configuration details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection_name:
+                    type: string
+                  temperature:
+                    type: number
+                  max_tokens:
+                    type: integer
+                  top_k:
+                    type: integer
+                  min_score:
+                    type: number
+                  use_gemini:
+                    type: boolean
+                  model_name:
+                    type: string
+                  agents_sdk_available:
+                    type: boolean
+  /validate-query:
+    get:
+      summary: Validate a query
+      description: Validate a query without processing it
+      parameters:
+        - name: question
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 1000
+          description: The question to validate
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  question:
+                    type: string
+                  is_valid:
+                    type: boolean
+                  message:
+                    type: string
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - question
+      properties:
+        question:
+          type: string
+          description: The user's question
+          minLength: 3
+          maxLength: 1000
+          example: "What is the purpose of this system?"
+        selected_text:
+          type: string
+          description: Optional selected text for context
+          example: "ROS 2 is a set of software libraries and tools"
+        top_k:
+          type: integer
+          description: Number of chunks to retrieve
+          minimum: 1
+          maximum: 20
+          default: 5
+          example: 3
+        min_score:
+          type: number
+          description: Minimum relevance score
+          minimum: 0.0
+          maximum: 1.0
+          default: 0.3
+          example: 0.5
+    QueryResponse:
+      type: object
+      required:
+        - content
+        - sources
+        - grounded
+        - retrieved_chunks
+      properties:
+        content:
+          type: string
+          description: The generated response content
+          example: "The system is designed to help users ask questions about the book content and receive grounded responses with source citations."
+        sources:
+          type: array
+          items:
+            type: string
+          description: List of source URLs cited in the response
+          example: ["https://example.com/book/chapter1", "https://example.com/book/chapter2"]
+        grounded:
+          type: boolean
+          description: Whether the response is grounded in retrieved content
+          example: true
+        retrieved_chunks:
+          type: array
+          items:
+            type: object
+            properties:
+              chunk_id:
+                type: string
+              content:
+                type: string
+              source_url:
+                type: string
+              page_title:
+                type: string
+              section_heading:
+                type: string
+              chunk_index:
+                type: integer
+              score:
+                type: number
+              original_chunk_id:
+                type: string
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+          example: "query_processing_error"
+        message:
+          type: string
+          description: Human-readable error description
+          example: "Error processing query: Invalid input parameters"

@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-organization.github.io', // Will be updated for actual deployment
+  url: 'https://physical-ai-humanoid-robotics-lovat.vercel.app', // Will be updated for actual deployment
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -79,7 +79,7 @@ const config: Config = {
       title: 'Physical AI & Humanoid Robotics',
       logo: {
         alt: 'Physical AI & Humanoid Robotics Logo',
-        src: 'img/robot-icon.svg', // Will need to add robot icon later
+        src: 'img/pngwing.com.png', // Will need to add robot icon later
       },
       items: [
         {
@@ -88,8 +88,40 @@ const config: Config = {
           position: 'left',
           label: 'Textbook',
         },
+        {
+          to: '/docs/intro',
+          label: 'Introduction',
+          position: 'left',
+        },
+        {
+          type: 'dropdown',
+          label: 'Modules',
+          position: 'left',
+          items: [
+            {
+              label: 'Module 1: Robotic Nervous System (ROS 2)',
+              to: '/docs/module-1-robotic-nervous-system/intro',
+            },
+            {
+              label: 'Module 2: Digital Twin (Gazebo & Unity)',
+              to: '/docs/module-2-digital-twin/intro',
+            },
+            {
+              label: 'Module 3: AI-Robot Brain (NVIDIA Isaac)',
+              to: '/docs/module-3-ai-robot-brain/intro',
+            },
+            {
+              label: 'Module 4: Vision-Language-Action (VLA)',
+              to: '/docs/module-4-vision-language-action/intro',
+            },
+            {
+              label: 'Capstone Project',
+              to: '/docs/capstone-project/intro',
+            },
+          ],
+        },
         {to: '/blog', label: 'Updates', position: 'left'}, // Renaming blog to Updates
-        { 
+        {
           href: 'https://github.com/NihalGhauri/Physical-AI-Humanoid-Robotics',
           label: 'GitHub',
           position: 'right',
@@ -98,6 +130,10 @@ const config: Config = {
           type: 'localeDropdown',
           position: 'right',
         },
+        // {
+        //   type: 'themeToggle',
+        //   position: 'right',
+        // },
       ],
     },
     footer: {
